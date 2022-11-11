@@ -86,8 +86,17 @@ async function descend() {
     document.getElementById("title").innerHTML = "Current Floor: " + floor + " // Current Points: " + currentPoints;
     document.getElementById("go").innerHTML = "";
     document.getElementById("leave").innerHTML = "";
-
-    createEnemy("random", 1);
+    if (floor < 15){
+        createEnemy("random", 1);
+    }
+    else if (floor < 30{
+        if (floor == 20){
+            createEnemy("random", 1);
+        }
+        else {
+            createEnemy("random", 2);
+        }
+    }
     document.getElementById("result1").innerHTML = "";
     await battle();
     document.getElementById("result5").innerHTML = "";
@@ -173,6 +182,61 @@ function createEnemy(type, num) {
                 enemyList[i].points = 2000;
                 enemyList[i].slotEmpty = false;
             }
+            if (floor > 10 && floor < 20){
+                random = Math.floor(Math.random() * (4) + 1);
+                if (random == 1){
+                    enemyList[i].enemyID = 6;
+                    enemyList[i].enemyName = "Royal Jelly";
+                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyTHP = enemyList[i].enemyHP;
+                    document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
+                    enemyList[i].enemyAttack = 4 + enemyLevel;
+                    enemyList[i].enemyDefence = 20 + enemyLevel;
+                    enemyList[i].enemyEvasion = 0;
+                    enemyList[i].xp = 10 + enemyLevel;
+                    enemyList[i].points = 300;
+                    enemyList[i].slotEmpty = false;
+                }
+                if (random == 2){
+                    enemyList[i].enemyID = 7;
+                    enemyList[i].enemyName = "Royal Jelly";
+                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyTHP = enemyList[i].enemyHP;
+                    document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
+                    enemyList[i].enemyAttack = 4 + enemyLevel;
+                    enemyList[i].enemyDefence = 20 + enemyLevel;
+                    enemyList[i].enemyEvasion = 0;
+                    enemyList[i].xp = 10 + enemyLevel;
+                    enemyList[i].points = 300;
+                    enemyList[i].slotEmpty = false;
+                }
+                if (random == 3){
+                    enemyList[i].enemyID = 8;
+                    enemyList[i].enemyName = "Royal Jelly";
+                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyTHP = enemyList[i].enemyHP;
+                    document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
+                    enemyList[i].enemyAttack = 4 + enemyLevel;
+                    enemyList[i].enemyDefence = 20 + enemyLevel;
+                    enemyList[i].enemyEvasion = 0;
+                    enemyList[i].xp = 12 + enemyLevel;
+                    enemyList[i].points = 350;
+                    enemyList[i].slotEmpty = false;
+                }
+                else{
+                    enemyList[i].enemyID = 9;
+                    enemyList[i].enemyName = "Royal Jelly";
+                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyTHP = enemyList[i].enemyHP;
+                    document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
+                    enemyList[i].enemyAttack = 4 + enemyLevel;
+                    enemyList[i].enemyDefence = 20 + enemyLevel;
+                    enemyList[i].enemyEvasion = 0;
+                    enemyList[i].xp = 15 + enemyLevel;
+                    enemyList[i].points = 400;
+                    enemyList[i].slotEmpty = false;
+                }
+            }
         }
         totalPoints += enemyList[0].points + enemyList[1].points + enemyList[2].points + enemyList[3].points;
         totalHP += enemyList[0].enemyHP + enemyList[1].enemyHP + enemyList[2].enemyHP + enemyList[3].enemyHP;
@@ -184,9 +248,7 @@ function createEnemy(type, num) {
         let slimelingMade = false;
         while (i < 4 && slimelingMade == false) {
             let id = "enemy" + (i + 1);
-            console.log("almost");
             if (enemyList[i].slotEmpty === true) {
-                console.log("got it");
                 enemyList[i].enemyID = 5;
                 enemyList[i].enemyName = "Slimeling";
                 enemyList[i].enemyHP = 5 + (1 * enemyLevel);
