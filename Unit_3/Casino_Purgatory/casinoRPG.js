@@ -186,57 +186,70 @@ function createEnemy(type, num) {
                 random = Math.floor(Math.random() * (4) + 1);
                 if (random == 1){
                     enemyList[i].enemyID = 6;
-                    enemyList[i].enemyName = "Royal Jelly";
-                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyName = "Skeleton Guard";
+                    enemyList[i].enemyHP = 20 + (2 * enemyLevel);
                     enemyList[i].enemyTHP = enemyList[i].enemyHP;
                     document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
-                    enemyList[i].enemyAttack = 4 + enemyLevel;
-                    enemyList[i].enemyDefence = 20 + enemyLevel;
+                    enemyList[i].enemyAttack = 6 + enemyLevel;
+                    enemyList[i].enemyDefence = 20;
                     enemyList[i].enemyEvasion = 0;
-                    enemyList[i].xp = 10 + enemyLevel;
+                    enemyList[i].xp = 15 + enemyLevel;
                     enemyList[i].points = 300;
                     enemyList[i].slotEmpty = false;
                 }
                 if (random == 2){
                     enemyList[i].enemyID = 7;
-                    enemyList[i].enemyName = "Royal Jelly";
-                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyName = "Skeleton Mage";
+                    enemyList[i].enemyHP = 10 + (2 * enemyLevel);
                     enemyList[i].enemyTHP = enemyList[i].enemyHP;
                     document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
                     enemyList[i].enemyAttack = 4 + enemyLevel;
-                    enemyList[i].enemyDefence = 20 + enemyLevel;
+                    enemyList[i].enemyDefence = 0;
                     enemyList[i].enemyEvasion = 0;
-                    enemyList[i].xp = 10 + enemyLevel;
+                    enemyList[i].xp = 12 + enemyLevel;
                     enemyList[i].points = 300;
                     enemyList[i].slotEmpty = false;
                 }
                 if (random == 3){
                     enemyList[i].enemyID = 8;
-                    enemyList[i].enemyName = "Royal Jelly";
-                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyName = "Sentient Book";
+                    enemyList[i].enemyHP = 10 + (1 * enemyLevel);
                     enemyList[i].enemyTHP = enemyList[i].enemyHP;
                     document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
-                    enemyList[i].enemyAttack = 4 + enemyLevel;
-                    enemyList[i].enemyDefence = 20 + enemyLevel;
-                    enemyList[i].enemyEvasion = 0;
+                    enemyList[i].enemyAttack = 0;
+                    enemyList[i].enemyDefence = 0;
+                    enemyList[i].enemyEvasion = 50;
                     enemyList[i].xp = 12 + enemyLevel;
                     enemyList[i].points = 350;
                     enemyList[i].slotEmpty = false;
                 }
                 else{
                     enemyList[i].enemyID = 9;
-                    enemyList[i].enemyName = "Royal Jelly";
-                    enemyList[i].enemyHP = 30 + (5 * enemyLevel);
+                    enemyList[i].enemyName = "Skeleton Cleric";
+                    enemyList[i].enemyHP = 8 + (1 * enemyLevel);
                     enemyList[i].enemyTHP = enemyList[i].enemyHP;
                     document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
-                    enemyList[i].enemyAttack = 4 + enemyLevel;
-                    enemyList[i].enemyDefence = 20 + enemyLevel;
-                    enemyList[i].enemyEvasion = 0;
-                    enemyList[i].xp = 15 + enemyLevel;
+                    enemyList[i].enemyAttack = 2 + enemyLevel;
+                    enemyList[i].enemyDefence = 10;
+                    enemyList[i].enemyEvasion = 20;
+                    enemyList[i].xp = 12 + enemyLevel;
                     enemyList[i].points = 400;
                     enemyList[i].slotEmpty = false;
                 }
             }
+            if (floor == 20){
+                enemyList[i].enemyID = 10;
+                enemyList[i].enemyName = "Librarian";
+                enemyList[i].enemyHP = 50 + (3 * enemyLevel);
+                enemyList[i].enemyTHP = enemyList[i].enemyHP;
+                document.getElementById(id).innerHTML = " // Lv " + enemyLevel + " " + enemyList[i].enemyName + " " + enemyList[i].enemyHP + "/" + enemyList[i].enemyTHP + " // ";
+                enemyList[i].enemyAttack = 6 + enemyLevel;
+                enemyList[i].enemyDefence = 0;
+                enemyList[i].enemyEvasion = 0;
+                enemyList[i].xp = 80;
+                enemyList[i].points = 5000;
+                enemyList[i].slotEmpty = false;
+            }    
         }
         totalPoints += enemyList[0].points + enemyList[1].points + enemyList[2].points + enemyList[3].points;
         totalHP += enemyList[0].enemyHP + enemyList[1].enemyHP + enemyList[2].enemyHP + enemyList[3].enemyHP;
@@ -402,6 +415,21 @@ async function battle() {
                 }
                 if (enemyList[i].enemyID == 5) {
                     await (slimeling());
+                }
+                if (enemyList[i].enemyID == 6) {
+                    await (skeletonGuard());
+                }
+                if (enemyList[i].enemyID == 7) {
+                    await (skeletonMage());
+                }
+                if (enemyList[i].enemyID == 8) {
+                    await (sentientBook());
+                }
+                if (enemyList[i].enemyID == 9) {
+                    await (skeletonCleric());
+                }
+                if (enemyList[i].enemyID == 10) {
+                    await (librarian());
                 }
             } else {
                 numEnemies--;
@@ -572,121 +600,129 @@ function display(attack) {
 
 //enemy attacks
 
+let hasSplit = false;
+function enemyAttack(attack){
+    if (attack == "slimeSpit"){
+        let damage = enemyList[currentEnemy].enemyAttack;
+        if (playerDodge == true) {
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to spit slime at you but you ducked just in time!";
+            playerDodge = false;
+        } else {
+            damage = Math.floor(damage * (1 - (playerDefence / 100)));
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " spit a slime glob at you dealing " + damage + " damage!";
+            playerHP -= damage
+        }
+    }  
+    if (attack == "summonSlimeling") {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  spat on the floor and the spit turned into a small slimeling!"
+        createEnemy("slimeling");
+    }
+    if (attack == "flyHigh"){
+        enemyList[currentEnemy].enemyEvasion += 20;
+        if (enemyList[currentEnemy].enemyEvasion > 50) {
+            enemyList[currentEnemy].enemyEvasion = 50;
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to fly faster, but it was already at max evasion."
+        } else {
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " flew faster and faster around the room, increasing its evasion."
+        }
+    }
+    if (attack == "bite"){
+        let damage = enemyList[currentEnemy].enemyAttack;
+        if (playerDodge == true) {
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to bite you, but you slided out of the way!"
+            playerDodge = false;
+        } else {
+            damage = Math.floor(damage * (1 - (playerDefence / 100)));
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " bit a chunk out of you you dealing " + damage + " damage!";
+            playerHP -= damage;
+        }
+    }
+    if (attack == "poisonousBite"){
+        let damage = enemyList[currentEnemy].enemyAttack - 2;
+        if (playerDodge == true) {
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to poison you, but you slided out of the way!"
+            playerDodge = false;
+        } else {
+            let poisonApplied = 2;
+            poison += poisonApplied;
+            damage = Math.floor(damage * (1 - (playerDefence / 100)));
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " gave you an infected wound dealing " + damage + " damage and applying " + poisonApplied + " poison!";
+            playerHP -= damage;
+        }
+    }
+    if (attack == "crush"){
+        let damage = enemyList[currentEnemy].enemyAttack * 1.5;
+        if (playerDodge == true) {
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to crush you but you were fast enough to escape!"
+            playerDodge = false;
+        } else {
+            damage = Math.floor(damage * (1 - (playerDefence / 100)));
+            document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  crushed your spine in dealing " + damage + " damage!";
+            playerHP -= damage;
+        }
+    }
+}
+
 function slime() {
     let random = Math.floor(Math.random() * (4) + 1);
+    let attack = [enemyAttack("slimeSpit"), enemyAttack("slimeSpit")
     if (random == 1) {
-        slimeSpit();
+        enemyAttack("slimeSpit");
     } else if (random == 2) {
-        slimeSpit();
+        enemyAttack("slimeSpit");
     } else if (random == 3) {
         if (numEnemies < 4) {
-            summonSlimeling();
+            enemyAttack("summonSlimeling");
         } else {
             document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to summon a little slimeling but failed.";
         }
     } else {
         if (numEnemies < 4) {
-            summonSlimeling();
+            enemyAttack("summonSlimeling");
         } else {
             document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to summon a little slimeling but failed.";
         }
     }
-}
-
-function summonSlimeling() {
-    document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  spat on the floor and the spit turned into a small slimeling!"
-    createEnemy("slimeling");
 }
 
 function slimeling() {
     let random = Math.floor(Math.random() * (4) + 1);
     if (random == 1) {
-        slimeSpit();
+        enemyAttack("slimeSpit");
     } else if (random == 2) {
-        slimeSpit();
+        enemyAttack("slimeSpit");
     } else if (random == 3) {
-        slimeSpit();
+        enemyAttack("slimeSpit");
     } else {
-        slimeSpit();
-    }
-}
-
-function slimeSpit() {
-    let damage = enemyList[currentEnemy].enemyAttack;
-    if (playerDodge == true) {
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to spit slime at you but you ducked just in time!";
-        playerDodge = false;
-    } else {
-        damage = Math.floor(damage * (1 - (playerDefence / 100)));
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " spit a slime glob at you dealing " + damage + " damage!";
-        playerHP -= damage
+        enemyAttack("slimeSpit");
     }
 }
 
 function bat() {
     let random = Math.floor(Math.random() * (4) + 1);
     if (random == 1) {
-        flyHigh();
+        enemyAttack("flyHigh");
     } else if (random == 2) {
-        bite();
+        enemyAttack("bite");
     } else if (random == 3) {
-        bite();
+        enemyAttack("bite");
     } else {
-        bite();
-    }
-}
-
-function flyHigh() {
-    enemyList[currentEnemy].enemyEvasion += 20;
-    if (enemyList[currentEnemy].enemyEvasion > 50) {
-        enemyList[currentEnemy].enemyEvasion -= 10;
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to fly faster, but it was already at max evasion."
-    } else {
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " flew faster and faster around the room, increasing its evasion."
-    }
-}
-
-function bite() {
-    let damage = enemyList[currentEnemy].enemyAttack;
-    if (playerDodge == true) {
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to bite you, but you slided out of the way!"
-        playerDodge = false;
-    } else {
-        damage = Math.floor(damage * (1 - (playerDefence / 100)));
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " bit a chunk out of you you dealing " + damage + " damage!";
-        playerHP -= damage;
+        enemyAttack("bite");
     }
 }
 
 function rat() {
     let random = Math.floor(Math.random() * (4) + 1);
     if (random == 1) {
-        bite();
+        enemyAttack("bite");
     } else if (random == 2) {
-        bite();
+        enemyAttack("bite");
     } else if (random == 3) {
-        poisonousBite();
+        enemyAttack("poisonousBite");
     } else {
-        poisonousBite();
+        enemyAttack("poisonousBite");
     }
 }
-
-function poisonousBite() {
-    let damage = enemyList[currentEnemy].enemyAttack - 2;
-    if (playerDodge == true) {
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to poison you, but you slided out of the way!"
-        playerDodge = false;
-    } else {
-        let poisonApplied = 2;
-        poison += poisonApplied;
-        damage = Math.floor(damage * (1 - (playerDefence / 100)));
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " gave you an infected wound dealing " + damage + " damage and applying " + poisonApplied + " poison!";
-        playerHP -= damage;
-
-    }
-}
-
-let hasSplit = false;
 
 function royalJelly() {
     if (enemyList[currentEnemy].enemyHP <= 30 && hasSplit == false) {
@@ -712,11 +748,11 @@ function royalJelly() {
 function royalJellyClone() {
     let random = Math.floor(Math.random() * (4) + 1);
     if (random == 1) {
-        slimeSpit();
+        enemyAttack("slimeSpit");
     } else if (random == 2) {
-        crush();
+        enemyAttack("crush");
     } else if (random == 3) {
-        harden();
+        enemyAttack("harden");
     } else {
         if (numEnemies >= 3) {
             document.getElementById(currentResult).innerHTML = "The Royal Jelly Tried to summon minions, but there was no more space available!"
@@ -729,18 +765,6 @@ function royalJellyClone() {
 function split() {
     document.getElementById("result5").innerHTML = "The " + enemyList[currentEnemy].enemyName + " split into two!!!"
     createEnemy("splitRoyal");
-}
-
-function crush() {
-    let damage = enemyList[currentEnemy].enemyAttack * 1.5;
-    if (playerDodge == true) {
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to crush you but you were fast enough to escape!"
-        playerDodge = false;
-    } else {
-        damage = Math.floor(damage * (1 - (playerDefence / 100)));
-        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  crushed your spine in dealing " + damage + " damage!";
-        playerHP -= damage
-    }
 }
 
 function harden() {
@@ -756,4 +780,167 @@ function harden() {
 function summonSlime() {
     document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " split off a small blob of itself which formed into a slime!"
     createEnemy("slime");
+}
+
+function skeletonGuard(){
+    let random = Math.floor(Math.random() * (4) + 1);
+    if (random == 1) {
+        undeadSlash();
+    } else if (random == 2) {
+        undeadStab();
+    } else if (random == 3) {
+        protect();
+    } else {
+        protect();
+    }
+}
+
+function undeadSlash(){
+    let damage = enemyList[currentEnemy].enemyAttack;
+    if (playerDodge == true) {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to slash you but you dodged at the last second!"
+        playerDodge = false;
+    } else {
+        damage = Math.floor(damage * (1 - (playerDefence / 100)));
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  slashed you right in your chest dealing " + damage + " damage!";
+        playerHP -= damage;
+    }
+}
+
+function undeadStab(){
+    let damage = enemyList[currentEnemy].enemyAttack;
+    if (playerDodge == true) {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to slash you but you dodged at the last second!"
+        playerDodge = false;
+    } else {
+        document.getElementById(currentResult).innerHTML = "Piercing your armor, the " + enemyList[currentEnemy].enemyName + "  stabbed you right in the lungs dealing " + damage + " damage!";
+        playerHP -= damage;
+    }
+}
+
+function protect(){
+    //not rn
+}
+    
+function skeletonMage(){
+    let random = Math.floor(Math.random() * (4) + 1);
+    if (random == 1) {
+        undeadBeam();
+    } else if (random == 2) {
+        poke();
+    } else if (random == 3) {
+        buffAttackGroup();
+    } else {
+        buffEvasionGroup();
+    }
+}
+
+function buffAttackGroup(){
+    for (let i = 0; i < numEnemies; i++){
+        enemyList[i].enemyAttack *= 2;
+        if (enemyLis[i].buffedAttack == true) {
+            enemyList[i].enemyAttack /= 2;
+        }
+        enemyList[i].buffedAttack = true;
+    }
+    document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " casted a spell that buffed all enemies attacks!";
+}
+
+function buffEvasionGroup() {
+    for (let = 0; i < numEnemies; i++){
+        enemyList[i].enemyEvasion += 20;
+        if (enemyList[i].enemyEvasion > 33) {
+            enemyList[i].enemyEvasion == 33;
+        } 
+    }
+    document.getElementById(currentResult).innerHTMl = "The " + enemyList[currentEnemy].enemyName + " casted a wind spell that increases all the enemies evasion!";
+}
+
+function undeadBeam(){
+    let damage = enemyList[currentEnemy].enemyAttack * 2;
+    if (playerDodge == true) {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to shoot a beam at you but you limboed under it!";
+        playerDodge = false;
+    } else {
+        damage = Math.floor(damage * (1 - (playerDefence / 100)));
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  shot a beam at your face dealing " + damage + " damage!";
+        playerHP -= damage;
+    }
+}
+
+function poke(){
+    let damage = enemyList[currentEnemy].enemyAttack * 0.5;
+    if (playerDodge == true) {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to poke you, but you ran away!";
+        playerDodge = false;
+    } else {
+        damage = Math.floor(damage * (1 - (playerDefence / 100)));
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  poked you in the gut dealing " + damage + " damage!";
+        playerHP -= damage;
+    }
+}
+
+function undeadStab(){
+    let damage = enemyList[currentEnemy].enemyAttack;
+    if (playerDodge == true) {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + "  tried to slash you but you dodged at the last second!"
+        playerDodge = false;
+    } else {
+        document.getElementById(currentResult).innerHTML = "Piercing your armor, the " + enemyList[currentEnemy].enemyName + "  stabbed you right in the lungs dealing " + damage + " damage!";
+        playerHP -= damage;
+    }
+}
+
+function sentientBook(){
+    let random = Math.floor(Math.random() * (4) + 1);
+    if (random == 1) {
+        paperCut();
+    } else if (random == 2) {
+        paperCut();
+    } else if (random == 3) {
+        bookFire();
+    } else {
+        bookFire();
+    }
+}
+
+function paperCut() {
+    let damage = enemyList[currentEnemy].enemyAttack;
+    if (playerDodge == true) {
+        document.getElementById(currentResult).innerHTML = "The " + enemyList[currentEnemy].enemyName + " tried to give you a paper cut, but you can't read!"
+        playerDodge = false;
+    } else {
+        let bleedApplied = 3;
+        bleed += bleedApplied;
+        damage = Math.floor(damage * (1 - (playerDefence / 100)));
+        document.getElementById(currentResult).innerHTML = "You read your favorite passage from  " + enemyList[currentEnemy].enemyName + ", but unfortunately got a paper cut dealing  " + damage + " damage and applying " + bleedApplied + " bleed!";
+        playerHP -= damage;
+
+    }
+}
+
+function skeletonCleric(){
+    let random = Math.floor(Math.random() * (4) + 1);
+    if (random == 1) {
+        bite();
+    } else if (random == 2) {
+        bite();
+    } else if (random == 3) {
+        poisonousBite();
+    } else {
+        poisonousBite();
+    }
+}
+
+function librarian(){
+    let random = Math.floor(Math.random() * (4) + 1);
+    if (random == 1) {
+        bite();
+    } else if (random == 2) {
+        bite();
+    } else if (random == 3) {
+        poisonousBite();
+    } else {
+        poisonousBite();
+    }
 }
